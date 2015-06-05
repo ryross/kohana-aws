@@ -113,6 +113,7 @@
             $fh = fopen($fs_path, 'r');
             $curl_opts = array('CURLOPT_PUT' => true,
                                'CURLOPT_INFILE' => $fh,
+			       'CURLOPT_SSLVERSION' =>  CURL_SSLVERSION_TLSv1,
                                'CURLOPT_INFILESIZE' => filesize($fs_path),
                                'CURLOPT_CUSTOMREQUEST' => 'PUT');
 
@@ -232,6 +233,7 @@
             curl_setopt($ch, CURLOPT_URL, $uri);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request['verb']);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	    curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             // curl_setopt($ch, CURLOPT_VERBOSE, true);
 
